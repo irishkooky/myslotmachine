@@ -23,11 +23,9 @@ main {
   margin-bottom: 16px;
 }
 
-.stop {
-  cursor: pointer;
+#status {
   height: 32px;
-  background: #ef454a;
-  box-shadow: 0 4px 0 #d1483e;
+  background: #7D18CF;
   border-radius: 16px;
   line-height: 32px;
   text-align: center;

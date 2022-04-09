@@ -5,20 +5,27 @@
       const section = document.createElement('section');
       section.classList.add('panel');
 
+      this.status = document.createElement('div');
+      this.status.setAttribute('id', 'status');
+      this.status.textContent = 'ストップボタンをおしてね';
+
       this.img = document.createElement('img');
       this.img.src = this.getRandomImage();
 
       this.timeoutId = undefined;
       this.spinStop = document.createElement('div');
-      this.spinStop.textContent = 'もういちどふる';
       this.spinStop.setAttribute('id', 'spin');
+      this.spinStop.textContent = 'もういちどふる';
       this.spinStop.addEventListener('click', () => {
         if (this.spinStop.classList.contains('inactive')) {
           clearTimeout(this.timeoutId);
           this.spinStop.classList.remove('inactive');
+          this.spinStop.classList.add('stop');
           this.spinStop.textContent = 'もういちどふる';
+          this.getNumbers();
           return;
         }
+        this.spinStop.classList.remove('stop');
         this.spinStop.classList.add('inactive');
         this.spin();
         this.spinStop.textContent = 'ストップ';
@@ -28,6 +35,7 @@
       this.drawCard.setAttribute('id', 'draw-card');
       this.drawCard.textContent = 'カードをひく';
 
+      section.appendChild(this.status);
       section.appendChild(this.img);
       section.appendChild(this.spinStop);
       section.appendChild(this.drawCard);
@@ -48,10 +56,17 @@
       return images[Math.floor(Math.random() * images.length)];
     }
     spin() {
+      this.status.textContent = 'ストップボタンをおしてね';
       this.img.src = this.getRandomImage();
       this.timeoutId = setTimeout(() => {
         this.spin();
       }, 100);
+    }
+    getNumbers() {
+      if (this.spinStop.classList.contains('stop')) {
+        const filename = this.img.src.match(/([^/]*)\./)[1];
+        this.status.textContent = filename + '！';
+      }
     }
   }
   new Panel();
