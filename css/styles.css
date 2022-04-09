@@ -14,9 +14,13 @@ main {
   justify-content: center;
 }
 
+.panel {
+  text-align: center;
+}
+
 .panel img {
   height: 110px;
-  margin-bottom: 4px;
+  margin-bottom: 16px;
 }
 
 .stop {
@@ -30,6 +34,7 @@ main {
   font-size: 14px;
   color: #fff;
   user-select: none;
+  margin-bottom: 16px;
 }
 
 #spin {
@@ -44,7 +49,7 @@ main {
   user-select: none;
   margin: 0 auto 16px;
 }
-#drow-card {
+#draw-card {
   cursor: pointer;
   width: 280px;
   height: 36px;
