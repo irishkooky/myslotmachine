@@ -34,6 +34,10 @@
       this.drawCard = document.createElement('div');
       this.drawCard.setAttribute('id', 'draw-card');
       this.drawCard.textContent = 'カードをひく';
+      this.cardChoice = document.getElementById('card-choice')
+      this.drawCard.addEventListener('click', () => {
+        this.cardChoice.classList.add('slidein', 'bg-white');
+      });
 
       section.appendChild(this.status);
       section.appendChild(this.img);
@@ -67,6 +71,9 @@
         const filename = this.img.src.match(/([^/]*)\./)[1];
         this.status.textContent = filename + '！';
       }
+    }
+    getCard() {
+      
     }
   }
   new Panel();
